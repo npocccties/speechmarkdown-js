@@ -126,10 +126,29 @@ export class AmazonAlexaSsmlFormatter extends SsmlFormatterBase {
             }
 
             case 'ipa': {
+              console.log("process ipa");
               if (!textModifierObject.tags[ssmlTag]) {
                 textModifierObject.tags[ssmlTag] = { sortId: sortId, attrs: null };
               }
               textModifierObject.tags[ssmlTag].attrs = { alphabet: key, ph: value };
+              break;
+            }
+
+            case 'ruby': {
+              console.log("process ruby");
+              if (!textModifierObject.tags[ssmlTag]) {
+                textModifierObject.tags[ssmlTag] = { sortId: sortId, attrs: null };
+              }
+              textModifierObject.tags[ssmlTag].attrs = { type: key, ph: value };
+              break;
+            }
+
+            case 'kana': {
+              console.log("process kana");
+              if (!textModifierObject.tags[ssmlTag]) {
+                textModifierObject.tags[ssmlTag] = { sortId: sortId, attrs: null };
+              }
+              textModifierObject.tags[ssmlTag].attrs = { alphabet: "x-amazon-pron-kana", ph: value };
               break;
             }
 

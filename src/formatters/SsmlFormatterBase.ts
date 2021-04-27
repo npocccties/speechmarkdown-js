@@ -55,6 +55,8 @@ export abstract class SsmlFormatterBase extends FormatterBase {
     'newscaster': null,
     'excited': null,
     'disappointed': null,
+    'ruby': 'phoneme',
+    'kana': 'phoneme',
   };
 
   public format(ast: any): string {

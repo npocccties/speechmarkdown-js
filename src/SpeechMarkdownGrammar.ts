@@ -165,6 +165,8 @@ export function speechMarkdownGrammar(myna: any): any {
       'voice',
       'excited',
       'disappointed',
+      'ruby',
+      'kana',
     ).ast;
     // Special characters for <phoneme alphabet="ipa" ph="..."> tag
     // const ipaChars = ['.', "'", 'æ', '͡ʒ', 'ð', 'ʃ', '͡ʃ', 'θ', 'ʒ', 'ə', 'ɚ', 'aɪ', 'aʊ', 'ɑ',
@@ -203,12 +205,28 @@ export function speechMarkdownGrammar(myna: any): any {
       'ɹ',
     ];
 
+    const hiragana = ['ぁ','あ','ぃ','い','ぅ','う','ぇ','え','ぉ','お','か','が','き','ぎ','く','ぐ',
+    'け','げ','こ','ご','さ','ざ','し','じ','す','ず','せ','ぜ','そ','ぞ','た','だ',
+    'ち','ぢ','っ','つ','づ','て','で','と','ど','な','に','ぬ','ね','の','は',
+    'ば','ぱ','ひ','び','ぴ','ふ','ぶ','ぷ','へ','べ','ぺ','ほ','ぼ','ぽ','ま','み',
+    'む','め','も','ゃ','や','ゅ','ゆ','ょ','よ','ら','り','る','れ','ろ','ゎ','わ',
+    'ゐ','ゑ','を','ん','ゔ','ゕ','ゖ'];
+
+    const katakana = ['ァ','ア','ィ','イ','ゥ','ウ','ェ','エ','ォ','オ','カ','ガ','キ','ギ','ク',
+    'グ','ケ','ゲ','コ','ゴ','サ','ザ','シ','ジ','ス','ズ','セ','ゼ','ソ','ゾ','タ',
+    'ダ','チ','ヂ','ッ','ツ','ヅ','テ','デ','ト','ド','ナ','ニ','ヌ','ネ','ノ','ハ',
+    'バ','パ','ヒ','ビ','ピ','フ','ブ','プ','ヘ','ベ','ペ','ホ','ボ','ポ','マ','ミ',
+    'ム','メ','モ','ャ','ヤ','ュ','ユ','ョ','ヨ','ラ','リ','ル','レ','ロ','ヮ','ワ',
+    'ヰ','ヱ','ヲ','ン','ヴ','ヵ','ヶ','ヷ','ヸ','ヹ','ヺ'];
+
     this.textModifierText = m.choice(
       m.digit,
       m.letter,
       m.hyphen,
       m.space,
       ...ipaChars,
+      ...hiragana,
+      ...katakana,
     ).oneOrMore.ast;
 
     this.textModifierTextDoubleQuote = m.choice(
@@ -217,6 +235,8 @@ export function speechMarkdownGrammar(myna: any): any {
       m.hyphen,
       m.space,
       ...ipaChars,
+      ...hiragana,
+      ...katakana,
       "'",
     ).oneOrMore.ast;
 
